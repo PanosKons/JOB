@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
-    public Entity entity;
+    private Entity entity;
     public GameObject green;
     public GameObject red;
+    public GameObject Overlay;
+    public bool opposite;
     float max;
     float maxHealth;
     private void Start()
     {
+        entity = GetComponentInParent<Entity>();
         max = green.transform.localScale.x;
         maxHealth = entity.character.unit.MaxHealth;
     }
@@ -20,12 +23,15 @@ public class HealthBar : MonoBehaviour
         {
             green.SetActive(false);
             red.SetActive(false);
+            Overlay.SetActive(false);
         }
         else
         {
+            int mt;
+            if (opposite == true) mt = -1; else mt = 1;
             float point = entity.character.unit.Health * (max / maxHealth);
             green.transform.localScale = new Vector2(point,green.transform.localScale.y);
-            green.transform.localPosition = new Vector2((point/200)-max/200,green.transform.localPosition.y);
+            green.transform.localPosition = new Vector2((point/200 * mt) - (max/200 * mt),green.transform.localPosition.y);
         }
     }
 }

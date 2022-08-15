@@ -6,14 +6,16 @@ using TMPro;
 public class GameFlowManager : MonoBehaviour
 {
     public GameObject[] VEntityPrefab; //List of character prefabs
+
     public static GameFlowManager instance; //Instance
+
     public GameObject WonScreen;
     public GameObject LostScreen;
+
     public TMPro.TextMeshProUGUI Coins;
     //List of HEntities
     public Entity[] Entities = new Entity[6];
     public bool ActionInProgress = false;
-    // Start is called before the first frame update
     void Start()
     {
         instance = this;
@@ -41,7 +43,6 @@ public class GameFlowManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetMouseButtonDown(0))
@@ -85,7 +86,7 @@ public class GameFlowManager : MonoBehaviour
                     else
                     {
                         yield return StartCoroutine(Entities[entity.index].Attack());
-                        Entities[secondIndex].CalculateDamage(entity.index);
+                        int amount = Entities[secondIndex].CalculateDamage(entity.index);
                         Entities[entity.index].CanAttack = false;
                         if (instance.Entities[secondIndex].character.unit.Health <= 0)
                         {
@@ -95,7 +96,7 @@ public class GameFlowManager : MonoBehaviour
                         }
                         else
                         {
-                            yield return StartCoroutine(Entities[secondIndex].TakeDamage());
+                            yield return StartCoroutine(Entities[secondIndex].TakeDamage(amount));
                         }
                     }
                 }

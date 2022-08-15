@@ -10,7 +10,7 @@ public class Entity : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Character character;
     public bool CanAttack;
-    public TextMeshProUGUI text;
+    private TextMeshProUGUI text;
     public enum Effects
     {
         Shield,Crystal,Laser,Sting,MageAttack
@@ -18,6 +18,7 @@ public class Entity : MonoBehaviour
     public int[] effects;
     public void Init(int index, Character character)
     {
+        text = GetComponentInChildren<TextMeshProUGUI>();
         CanAttack = true;
         this.index = index;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -31,7 +32,7 @@ public class Entity : MonoBehaviour
         GameFlowManager.instance.CheckIfGameEnded();
         Destroy(gameObject);
     }
-    public void CalculateDamage(int index)
+    public int CalculateDamage(int index)
     {
         int amount = GameFlowManager.instance.Entities[index].character.unit.Attack;
         if (effects[(int)Effects.Shield] > 0)
@@ -41,42 +42,28 @@ public class Entity : MonoBehaviour
                 animator.SetBool("Action", false);
             amount /= 4;
         }
-        if (effects[(int)Effects.MageAttack] > 0)
-        {
-            effects[(int)Effects.MageAttack]--;
-            if (effects[(int)Effects.MageAttack] == 0)
-                animator.SetBool("Action", false);
-            amount *= 2;
-        }
-        if (effects[(int)Effects.Crystal] > 0)
-        {
-            effects[(int)Effects.Crystal]--;
-            if (effects[(int)Effects.Crystal] == 0)
-                animator.SetBool("Action", false);
-            amount *= 2;
-        }
-        if (GameFlowManager.instance.Entities[index].effects[(int)Effects.Crystal]>0)
+        if (GameFlowManager.instance.Entities[index].effects[(int)Effects.Crystal] > 0)
         {
             effects[(int)Effects.Crystal]--;
             if (effects[(int)Effects.Crystal] == 0)
                 GameFlowManager.instance.Entities[index].animator.SetBool("Action", false);
             amount *= 3;
         }
-
         character.unit.Health -= amount;
+        return amount;
     }
     public IEnumerator EntityDied()
     {
         animator.SetTrigger("Death");
         yield return new WaitForSeconds(2.0f);
     }
-    public IEnumerator TakeDamage()
+    public IEnumerator TakeDamage(int amount)
     {
-        if(text != null) //temp
-            text.text = "-10";
+        if(text != null)
+            text.text = "-" + amount;
         animator.SetTrigger("TakeDamage");
         yield return StartCoroutine(WaitTheAnimation("TakeDamage"));
-        if (text != null) // temp
+        if (text != null)
             text.text = "";
     }
     public IEnumerator Attack()
@@ -105,7 +92,7 @@ public class Entity : MonoBehaviour
             case DataManager.EntityId.Connor:
                 Character ccharacter = new Character();
                 ccharacter.Id = DataManager.EntityId.PigClone;
-                ccharacter.unit = new Unit(10,10,4);
+                ccharacter.unit = GlobalManager.Instance.units[DataManager.EntityId.PigClone];
                 for (int i = 3; i < GameFlowManager.instance.Entities.Length; i++)
                 {
                     if (GameFlowManager.instance.Entities[i] == null)

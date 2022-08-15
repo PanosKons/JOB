@@ -2944,6 +2944,7 @@ GameObject:
   - component: {fileID: 678482259}
   - component: {fileID: 678482258}
   - component: {fileID: 678482257}
+  - component: {fileID: 678482260}
   m_Layer: 5
   m_Name: Next
   m_TagString: Untagged
@@ -3053,6 +3054,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678482255}
   m_CullTransparentMesh: 1
+--- !u!114 &678482260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678482255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726a30f744444974a83a2f61299049ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &690558234
 GameObject:
   m_ObjectHideFlags: 0
@@ -3104,6 +3117,7 @@ GameObject:
   - component: {fileID: 697241025}
   - component: {fileID: 697241024}
   - component: {fileID: 697241023}
+  - component: {fileID: 697241026}
   m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged
@@ -3175,9 +3189,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 722332145}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonScreens, Assembly-CSharp
-        m_MethodName: Map
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3225,6 +3239,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 697241021}
   m_CullTransparentMesh: 1
+--- !u!114 &697241026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697241021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181195eba785f1e4181ca548f0cfe341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &716632140
 GameObject:
   m_ObjectHideFlags: 0
@@ -3380,18 +3406,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VEntityPrefab:
+  - {fileID: 0}
+  - {fileID: 8760708013765905574, guid: 503149de667c16a4f96d1beb84879feb, type: 3}
+  - {fileID: 5375605850755493376, guid: 3291c691235c9e54aa0c056057507d75, type: 3}
+  - {fileID: 3422774347846707513, guid: dba6677bee9922e43b92a3e60db8ab62, type: 3}
   - {fileID: 829998728011052375, guid: ed794f664fe1be7449821ceec5ec7bb9, type: 3}
   - {fileID: 6380191760389941389, guid: cccfbd11ff33d104395c74651ddf8946, type: 3}
   - {fileID: 260669453005927770, guid: 72ee1da81d8f3af4c87a1d0d2b50afa0, type: 3}
   - {fileID: 6556607335398213438, guid: 5842e5f54ff6a8f44847394b89063699, type: 3}
-  - {fileID: 8760708013765905574, guid: 503149de667c16a4f96d1beb84879feb, type: 3}
   - {fileID: 8183171695071851523, guid: 27389e9e4062b4f478a91891e9ecab6d, type: 3}
   - {fileID: 8320830602954025735, guid: e88f7724acd808b47aec95f1fa640557, type: 3}
   - {fileID: 8510503444268009567, guid: 2cab899685308d74d87a03a6a508777f, type: 3}
-  - {fileID: 3422774347846707513, guid: dba6677bee9922e43b92a3e60db8ab62, type: 3}
   - {fileID: 3205030790415101648, guid: 73058d08b6de52b49ac5559c0c50ec4f, type: 3}
   - {fileID: 3093457707155421797, guid: b4019adc27042a043a30b9993a3a48f3, type: 3}
-  - {fileID: 5375605850755493376, guid: 3291c691235c9e54aa0c056057507d75, type: 3}
   - {fileID: 8525376932413843764, guid: 998c5108e5146ec46b22f3263f96f112, type: 3}
   - {fileID: 5801291144381652264, guid: 26a074d266b4b8944b66cb05f89e775b, type: 3}
   - {fileID: 5409460835583630590, guid: ae1e6e64e248f844f8c63dfb44c4f717, type: 3}
@@ -5770,6 +5797,7 @@ GameObject:
   - component: {fileID: 1617329678}
   - component: {fileID: 1617329681}
   - component: {fileID: 1617329680}
+  - component: {fileID: 1617329682}
   - component: {fileID: 1617329679}
   m_Layer: 5
   m_Name: Retry
@@ -5842,9 +5870,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 722332145}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonScreens, Assembly-CSharp
-        m_MethodName: Map
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5892,6 +5920,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617329677}
   m_CullTransparentMesh: 1
+--- !u!114 &1617329682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617329677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181195eba785f1e4181ca548f0cfe341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1620795359
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ public class InputListener : MonoBehaviour
                             {
                             
                                     yield return StartCoroutine(GameFlowManager.instance.Entities[firstIndex].Attack());
-                                    GameFlowManager.instance.Entities[secondIndex].CalculateDamage(firstIndex);
+                                    int amount = GameFlowManager.instance.Entities[secondIndex].CalculateDamage(firstIndex);
                                     GameFlowManager.instance.Entities[firstIndex].CanAttack = false;
                                     if (GameFlowManager.instance.Entities[secondIndex].character.unit.Health <= 0)
                                     {
@@ -54,7 +54,7 @@ public class InputListener : MonoBehaviour
                                     }
                                     else
                                     {
-                                        yield return StartCoroutine(GameFlowManager.instance.Entities[secondIndex].TakeDamage());
+                                        yield return StartCoroutine(GameFlowManager.instance.Entities[secondIndex].TakeDamage(amount));
                                     }
 
                             }

@@ -12,10 +12,10 @@ public struct Unit
 }
 public struct Character
 {
-    public Character(int Health, int MaxHealth, int Attack, DataManager.EntityId Id)
+    public Character(Unit unit, DataManager.EntityId Id)
     {
         this.Id = Id;
-        unit = new Unit(Health, MaxHealth, Attack);
+        this.unit = unit;
     }
     public DataManager.EntityId Id;
     public Unit unit;
