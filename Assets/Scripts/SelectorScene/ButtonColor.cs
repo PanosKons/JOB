@@ -11,5 +11,6 @@ public class ButtonColor : MonoBehaviour
     {
         if (level < DataManager.UnlockedLevel)
             GetComponent<Image>().sprite = green;
+        GetComponent<Button>().onClick.AddListener(delegate { GlobalManager.Instance.OnLevelPress(level); });
     }
 }
