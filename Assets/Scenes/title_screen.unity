@@ -576,24 +576,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelDatas:
   - Enemies: 000000000f00000000000000
+    BackroundId: 0
   - Enemies: 000000000d00000000000000
+    BackroundId: 0
   - Enemies: 0d0000000f00000000000000
+    BackroundId: 0
   - Enemies: 0f0000000f00000000000000
+    BackroundId: 0
   - Enemies: 000000000b00000000000000
+    BackroundId: 0
   - Enemies: 0d0000000d0000000d000000
+    BackroundId: 0
   - Enemies: 0f0000000d0000000f000000
+    BackroundId: 0
   - Enemies: 0f0000000f0000000f000000
+    BackroundId: 0
   - Enemies: 000000000600000000000000
+    BackroundId: 1
   - Enemies: 050000000500000000000000
+    BackroundId: 2
   - Enemies: 050000000500000005000000
+    BackroundId: 2
   - Enemies: 050000000800000005000000
+    BackroundId: 2
   - Enemies: 080000000500000008000000
+    BackroundId: 2
   - Enemies: 080000000800000008000000
+    BackroundId: 2
   - Enemies: 050000000700000005000000
+    BackroundId: 3
   - Enemies: 070000000500000008000000
+    BackroundId: 3
   - Enemies: 070000000800000007000000
+    BackroundId: 3
   - Enemies: 070000000700000007000000
+    BackroundId: 3
   - Enemies: 000000000400000000000000
+    BackroundId: 4
 --- !u!4 &637279621
 Transform:
   m_ObjectHideFlags: 0

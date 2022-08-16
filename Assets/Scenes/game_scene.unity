@@ -3425,6 +3425,18 @@ MonoBehaviour:
   WonScreen: {fileID: 1669862472}
   LostScreen: {fileID: 1659086607}
   Coins: {fileID: 1337177607}
+  Backrounds:
+  - {fileID: 1223863938}
+  - {fileID: 690558234}
+  - {fileID: 1647616618}
+  - {fileID: 2080544927}
+  - {fileID: 1620795359}
+  Items:
+  - {fileID: 0}
+  - {fileID: 1137219961702968656, guid: d4ab2f914d37ff74a96ffedef9def94d, type: 3}
+  - {fileID: 373346064187833341, guid: c2ead2ff0ed3dcd4180ce74e27aeaeb6, type: 3}
+  - {fileID: 3053567156822048096, guid: 692b6d5ce8fa0ce4395ee663296f9999, type: 3}
+  - {fileID: 5518952494704868606, guid: 99b5ebb0a5ef43549aa67fd9399e2d3e, type: 3}
   Entities:
   - {fileID: 0}
   - {fileID: 0}
@@ -3433,6 +3445,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   ActionInProgress: 0
+  SpawnedItems: []
 --- !u!4 &722332144
 Transform:
   m_ObjectHideFlags: 0

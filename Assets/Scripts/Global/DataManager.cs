@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class DataManager
 {
+    public enum ItemId { None,Carrot, Lettuce, Potato, Tomato };
+    public enum BackroundId { Forest,Minegate,Borderline,Caverns,Grotto,Cennet,Prison};
     public enum EntityId { None, Dorien, Rena, Mikel, Adit, Centipede,Connor,CrystalizedDragon,Dragon,HummingBlade,MerakMage,MysteriousBandit,PigClone,Snake,StreetSparrow, WildPig }; // This is the list to match the Entities with their name
     public static int SelectedLevel = -1; 
     public static LevelPackage CurrentLevelPackage;
@@ -14,5 +16,7 @@ public static class DataManager
     public static int UnlockedLevel;
     public static int Coins;
     public static int Gems;
+    public static ItemStack[] StoredInventory = new ItemStack[16];
+    public static ItemStack[] Inventory = new ItemStack[9];
     #endregion
 }

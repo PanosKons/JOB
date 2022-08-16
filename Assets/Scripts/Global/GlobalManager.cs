@@ -6,6 +6,17 @@ using UnityEngine.SceneManagement;
 public struct LevelData
 {
     public DataManager.EntityId[] Enemies;
+    public DataManager.BackroundId BackroundId;
+};
+public struct ItemStack
+{
+    public ItemStack(DataManager.ItemId itemId, int Count)
+    {
+        this.itemId = itemId;
+        this.Count = Count;
+    }
+    public DataManager.ItemId itemId;
+    public int Count;
 };
 public class GlobalManager : MonoBehaviour
 {
@@ -39,9 +50,18 @@ public class GlobalManager : MonoBehaviour
     }
     public void DEBUG_RESET()
     {
-        DataManager.UnlockedLevel = 0;
-        DataManager.Coins = 50;
-        DataManager.Gems = 10;
+        if(DataManager.UnlockedLevel == 0)
+        {
+            DataManager.UnlockedLevel = 100;
+            DataManager.Coins = 5000;
+            DataManager.Gems = 1000;
+        }
+        else
+        {
+            DataManager.UnlockedLevel = 0;
+            DataManager.Coins = 50;
+            DataManager.Gems = 10;
+        }
     }
     public void LoadGameScene()
     {
@@ -84,7 +104,7 @@ public class GlobalManager : MonoBehaviour
         {
             characters[i] = new Character(units[(DataManager.EntityId)(DataManager.CharacterSelectorData[i])], (DataManager.EntityId)(DataManager.CharacterSelectorData[i]));
         }
-        DataManager.CurrentLevelPackage = new LevelPackage(characters, enemies);
+        DataManager.CurrentLevelPackage = new LevelPackage(characters, enemies, levelDatas[DataManager.SelectedLevel].BackroundId);
         LoadGameScene();
     }
 }

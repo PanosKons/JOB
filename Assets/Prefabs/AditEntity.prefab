@@ -122,7 +122,6 @@ MonoBehaviour:
   index: 0
   animator: {fileID: 0}
   CanAttack: 0
-  text: {fileID: 0}
   effects: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1001 &8705906656290141846
 PrefabInstance:
@@ -141,15 +140,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3889366186203632557, guid: 5aa13cd90abb90d4d904dcbf95bd406b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3889366186203632557, guid: 5aa13cd90abb90d4d904dcbf95bd406b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3889366186203632557, guid: 5aa13cd90abb90d4d904dcbf95bd406b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3889366186203632557, guid: 5aa13cd90abb90d4d904dcbf95bd406b, type: 3}
       propertyPath: m_LocalPosition.x

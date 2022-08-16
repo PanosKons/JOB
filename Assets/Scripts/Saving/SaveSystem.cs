@@ -25,6 +25,14 @@ public static class SaveSystem //This class is responsible for saving-loading da
             DataManager.Gems = savedData.gems;
             DataManager.Coins = savedData.coins;
             DataManager.UnlockedLevel = savedData.level;
+            for (int i = 0; i < savedData.StoredCounts.Length; i++)
+            {
+                DataManager.StoredInventory[i] = new ItemStack((DataManager.ItemId)savedData.StoredItemIds[i], savedData.StoredCounts[i]);
+            }
+            for (int i = 0; i < savedData.ItemCounts.Length; i++)
+            {
+                DataManager.Inventory[i] = new ItemStack((DataManager.ItemId)savedData.ItemIds[i], savedData.ItemCounts[i]);
+            }
             stream.Close();
         }
         else

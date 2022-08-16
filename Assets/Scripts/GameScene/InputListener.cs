@@ -67,6 +67,19 @@ public class InputListener : MonoBehaviour
                     }
                 }
             }
+            else if (firstIndex != -1)
+            {
+                foreach(GameObject Item in GameFlowManager.instance.SpawnedItems)
+                {
+                    if(Vector2.Distance(unclickedPos,Item.transform.position) < 0.5f)
+                    {
+                        GameFlowManager.instance.Entities[firstIndex].CanAttack = false;
+                        GameFlowManager.instance.AddToInventory(DataManager.StoredInventory, new ItemStack(Item.GetComponent<ItemType>().ItemId,1));
+                        GameFlowManager.instance.SpawnedItems.Remove(Item);
+                        Destroy(Item);
+                    }
+                }
+            }
             bool endTurn = true;
             foreach (Entity entity in GameFlowManager.instance.Entities)
             {
