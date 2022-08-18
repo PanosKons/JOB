@@ -17,6 +17,6 @@ public static class DataManager
     public static int Coins;
     public static int Gems;
     public static ItemStack[] StoredInventory = new ItemStack[16];
-    public static ItemStack[] Inventory = new ItemStack[9];
+    public static ItemStack[] Inventory = new ItemStack[7];
     #endregion
 }

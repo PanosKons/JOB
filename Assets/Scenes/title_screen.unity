@@ -613,6 +613,12 @@ MonoBehaviour:
     BackroundId: 3
   - Enemies: 000000000400000000000000
     BackroundId: 4
+  ItemSprites:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: e2a32bd5c5324414cb8d59bb56173230, type: 3}
+  - {fileID: 21300000, guid: 188d72fdeeff12d48a2e773e074ccff3, type: 3}
+  - {fileID: 21300000, guid: 97f814aee4dae2b4e8f53a0bad8ffcfc, type: 3}
+  - {fileID: 21300000, guid: fa66fc895c394464c985f548cf4bdab4, type: 3}
 --- !u!4 &637279621
 Transform:
   m_ObjectHideFlags: 0

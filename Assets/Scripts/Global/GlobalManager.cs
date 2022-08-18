@@ -1,19 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Unity.Burst.Intrinsics;
+
 [System.Serializable]
 public struct LevelData
 {
     public DataManager.EntityId[] Enemies;
     public DataManager.BackroundId BackroundId;
 };
-public struct ItemStack
+public struct ItemStack : IComparable<ItemStack>
 {
     public ItemStack(DataManager.ItemId itemId, int Count)
     {
         this.itemId = itemId;
         this.Count = Count;
+    }
+    public int CompareTo(ItemStack that)
+    {
+        if (itemId > that.itemId) return -1;
+        if (itemId == that.itemId) return 0;
+        return 1;
     }
     public DataManager.ItemId itemId;
     public int Count;
@@ -21,6 +30,7 @@ public struct ItemStack
 public class GlobalManager : MonoBehaviour
 {
     public LevelData[] levelDatas;
+    public Sprite[] ItemSprites;
     public Dictionary<DataManager.EntityId, Unit> units = new Dictionary<DataManager.EntityId, Unit>
     {
         {DataManager.EntityId.None, new Unit(1,1,0) },
@@ -43,10 +53,12 @@ public class GlobalManager : MonoBehaviour
     void Start()
     {
         if (Instance == null)
+        {
             Instance = this;
+            SaveSystem.LoadData();
+            DontDestroyOnLoad(this);
+        }
         else Destroy(gameObject);
-        SaveSystem.LoadData();
-        DontDestroyOnLoad(this);
     }
     public void DEBUG_RESET()
     {
@@ -55,12 +67,19 @@ public class GlobalManager : MonoBehaviour
             DataManager.UnlockedLevel = 100;
             DataManager.Coins = 5000;
             DataManager.Gems = 1000;
+            DataManager.StoredInventory = new ItemStack[16];
+            DataManager.StoredInventory[0] = new ItemStack(DataManager.ItemId.Potato, 24);
+            DataManager.StoredInventory[1] = new ItemStack(DataManager.ItemId.Tomato, 13);
+            DataManager.StoredInventory[2] = new ItemStack(DataManager.ItemId.Lettuce, 12);
+            DataManager.StoredInventory[3] = new ItemStack(DataManager.ItemId.Carrot, 45);
         }
         else
         {
             DataManager.UnlockedLevel = 0;
             DataManager.Coins = 50;
             DataManager.Gems = 10;
+            DataManager.StoredInventory = new ItemStack[16];
+            DataManager.Inventory = new ItemStack[7];
         }
     }
     public void LoadGameScene()
@@ -90,6 +109,7 @@ public class GlobalManager : MonoBehaviour
     public void OpenInventory()
     {
         InventoryManager.Instance.gameObject.SetActive(true);
+        InventoryManager.Instance.RefreshInventory();
     }
     public void StartLevel(int level)
     {
@@ -106,5 +126,33 @@ public class GlobalManager : MonoBehaviour
         }
         DataManager.CurrentLevelPackage = new LevelPackage(characters, enemies, levelDatas[DataManager.SelectedLevel].BackroundId);
         LoadGameScene();
+    }
+    private void SortInventory(ItemStack[] Inventory)
+    {
+        Array.Sort(Inventory);
+    }
+    public bool AddToInventory(ItemStack[] Inventory, ItemStack newStack)
+    {
+        for (int i = 0; i < Inventory.Length; i++)
+        {
+            if (Inventory[i].itemId == newStack.itemId)
+            {
+                Inventory[i].Count += newStack.Count;
+                return true;
+            }
+            else if (Inventory[i].itemId == DataManager.ItemId.None)
+            {
+                Inventory[i] = newStack;
+                SortInventory(Inventory);
+                return true;
+            }
+        }
+        return false;
+    }
+    public void RemoveFromInventory(ItemStack[] Inventory,int index)
+    {
+        Inventory[index].itemId = DataManager.ItemId.None;
+        Inventory[index].Count = 0;
+        SortInventory(Inventory);
     }
 }

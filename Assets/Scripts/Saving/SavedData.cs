@@ -19,8 +19,8 @@ public class SavedData //This is a template which specifies which items are save
         gems = DataManager.Gems;
         StoredItemIds = new int[16];
         StoredCounts = new int[16];
-        ItemIds = new int[9];
-        ItemCounts = new int[9];
+        ItemIds = new int[7];
+        ItemCounts = new int[7];
 
         for (int i = 0; i < DataManager.StoredInventory.Length; i++)
         {

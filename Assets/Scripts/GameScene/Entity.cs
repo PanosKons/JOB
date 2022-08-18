@@ -44,8 +44,8 @@ public class Entity : MonoBehaviour
         }
         if (GameFlowManager.instance.Entities[index].effects[(int)Effects.Crystal] > 0)
         {
-            effects[(int)Effects.Crystal]--;
-            if (effects[(int)Effects.Crystal] == 0)
+            GameFlowManager.instance.Entities[index].effects[(int)Effects.Crystal]--;
+            if (GameFlowManager.instance.Entities[index].effects[(int)Effects.Crystal] == 0)
                 GameFlowManager.instance.Entities[index].animator.SetBool("Action", false);
             amount *= 3;
         }
@@ -104,7 +104,7 @@ public class Entity : MonoBehaviour
                 }
                 break;
             case DataManager.EntityId.Rena:
-                GameFlowManager.instance.Entities[target].character.unit.Health = Mathf.Min(GameFlowManager.instance.Entities[target].character.unit.Health+5, GameFlowManager.instance.Entities[target].character.unit.MaxHealth);
+                GameFlowManager.instance.Entities[target].character.unit.Health = Mathf.Min(GameFlowManager.instance.Entities[target].character.unit.Health+12, GameFlowManager.instance.Entities[target].character.unit.MaxHealth);
                 break;
         }
     }

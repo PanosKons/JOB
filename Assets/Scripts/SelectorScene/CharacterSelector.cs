@@ -13,6 +13,21 @@ public class CharacterSelector : MonoBehaviour
         Instance = this;
         gameObject.SetActive(false);
     }
+    private void OnEnable()
+    {
+        CharacterButton(0);
+        CharacterButton(0);
+        CharacterButton(0);
+        CharacterButton(0);
+        CharacterButton(1);
+        CharacterButton(1);
+        CharacterButton(1);
+        CharacterButton(1);
+        CharacterButton(2);
+        CharacterButton(2);
+        CharacterButton(2);
+        CharacterButton(2);
+    }
     public void CharacterButton(int position)
     {
         int a1 = -1;

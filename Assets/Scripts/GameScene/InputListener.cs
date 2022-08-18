@@ -69,12 +69,12 @@ public class InputListener : MonoBehaviour
             }
             else if (firstIndex != -1)
             {
-                foreach(GameObject Item in GameFlowManager.instance.SpawnedItems)
+                foreach(GameObject Item in GameFlowManager.instance.SpawnedItems.ToArray())
                 {
                     if(Vector2.Distance(unclickedPos,Item.transform.position) < 0.5f)
                     {
                         GameFlowManager.instance.Entities[firstIndex].CanAttack = false;
-                        GameFlowManager.instance.AddToInventory(DataManager.StoredInventory, new ItemStack(Item.GetComponent<ItemType>().ItemId,1));
+                        GlobalManager.Instance.AddToInventory(DataManager.StoredInventory, new ItemStack(Item.GetComponent<ItemType>().ItemId,1));
                         GameFlowManager.instance.SpawnedItems.Remove(Item);
                         Destroy(Item);
                     }
@@ -90,7 +90,7 @@ public class InputListener : MonoBehaviour
                             endTurn = false;
                         }
             }
-            if (endTurn) StartCoroutine(GameFlowManager.instance.EnemiesTurn());
+            if (endTurn) yield return StartCoroutine(GameFlowManager.instance.EnemiesTurn());
             GameFlowManager.instance.ActionInProgress = false;
         }
     }
