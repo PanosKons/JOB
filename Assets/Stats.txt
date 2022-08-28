@@ -1,8 +1,8 @@
-				Attack 			Health 			
-Dorien
-Rena
-Mikel
-Fay
+				Attack 			Health 				
+Dorien			  14				  75
+Rena				  10				  65
+Mikel				  16				  55
+Fay				  18				  60
 
 Wild pig
 Connor
